@@ -17,13 +17,14 @@ import android.view.View;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 
 import vironit.poddubnaya.myappvironit.R;
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BasePresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.base.IBaseView;
 import vironit.poddubnaya.myappvironit.utils.KeyboardUtil;
 import vironit.poddubnaya.myappvironit.utils.ShowDialogUtil;
 import vironit.poddubnaya.myappvironit.utils.ShowSnackBarUtil;
 
-public abstract class BaseActivity<P extends BasePresenter> extends MvpAppCompatActivity implements IBaseView {
+public abstract class BaseActivity<P extends BaseAppPresenter> extends MvpAppCompatActivity implements IBaseView {
 
     @Nullable
     private AlertDialog mDialog;

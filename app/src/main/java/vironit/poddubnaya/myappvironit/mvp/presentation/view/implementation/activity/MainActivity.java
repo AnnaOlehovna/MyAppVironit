@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
 
     @Override
     public int getRootViewResId() {
-        return R.id.root_view;
+        return R.id.main_activity_root_view;
     }
 
     @Override

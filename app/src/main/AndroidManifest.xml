@@ -26,6 +26,8 @@
             android:theme="@style/AppTheme.TransparentActivity"
             android:noHistory="true"/>
 
+        <activity android:name=".mvp.presentation.view.implementation.activity.TestActivity"/>
+
 
     </application>
 

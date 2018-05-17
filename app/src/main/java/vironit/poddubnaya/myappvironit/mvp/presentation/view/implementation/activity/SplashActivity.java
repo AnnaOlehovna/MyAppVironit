@@ -1,6 +1,5 @@
 package vironit.poddubnaya.myappvironit.mvp.presentation.view.implementation.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
@@ -24,8 +23,7 @@ public class SplashActivity extends MvpAppCompatActivity implements SplashView {
 
     @Override
     public void navigateToLoginScreen() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        TestActivity.start(this);
     }
 
 

@@ -4,9 +4,10 @@ import android.content.Intent;
 
 import vironit.poddubnaya.myappvironit.R;
 import vironit.poddubnaya.myappvironit.constants.IAppConstants;
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BasePresenter;
 
-public abstract class BaseDoubleBackActivity<P extends BasePresenter> extends BaseActivity<P> {
+public abstract class BaseDoubleBackActivity<P extends BaseAppPresenter> extends BaseActivity<P> {
 
 
     private boolean doubleBackToExitPressedOnce = false;

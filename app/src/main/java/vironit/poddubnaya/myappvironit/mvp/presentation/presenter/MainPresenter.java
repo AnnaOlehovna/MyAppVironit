@@ -2,11 +2,12 @@ package vironit.poddubnaya.myappvironit.mvp.presentation.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BasePresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.IMainView;
 
 @InjectViewState
-public class MainPresenter extends BasePresenter<IMainView> {
+public class MainPresenter extends BaseAppPresenter<IMainView> {
 
     public void showProgress() {
         getViewState().showProgress();
