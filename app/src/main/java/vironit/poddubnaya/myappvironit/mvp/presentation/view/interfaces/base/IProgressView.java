@@ -1,12 +1,12 @@
 package vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.base;
 
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public interface IProgressView {
 
     void showProgress();
 
-    void showProgress(@NonNull String message);
+    void showProgress(@Nullable String messageText);
 
     void hideProgress();
 

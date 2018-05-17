@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +27,7 @@ public abstract class ShowDialogUtil {
         }
 
         //TODO
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity /*, R.style.AlertDialogStyle*/ )
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(activity, R.style.AlertDialogStyle))
                 .setTitle(titleText)
                 .setIcon(R.mipmap.ic_launcher_round)
                 .setView(initProgressView(activity, messageText))
@@ -36,6 +38,7 @@ public abstract class ShowDialogUtil {
         if (window != null) {
             window.setLayout(activity.getResources().getDimensionPixelSize(R.dimen.progress_dialog_width),
                     ViewGroup.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawableResource(R.drawable.dialog_shape);
         }
         materialDialog.setCanceledOnTouchOutside(false);
         materialDialog.setCancelable(false);
@@ -69,7 +72,7 @@ public abstract class ShowDialogUtil {
         }
 
         //TODO
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity /*, R.style.AlertDialogStyle*/)
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(activity, R.style.AlertDialogStyle))
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton(positiveOptionMessage, positiveListener)

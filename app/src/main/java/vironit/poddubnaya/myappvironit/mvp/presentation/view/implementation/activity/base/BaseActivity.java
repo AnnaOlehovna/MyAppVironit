@@ -2,6 +2,9 @@ package vironit.poddubnaya.myappvironit.mvp.presentation.view.implementation.act
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.MessageQueue;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -14,12 +17,13 @@ import android.view.View;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 
 import vironit.poddubnaya.myappvironit.R;
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BasePresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.base.IBaseView;
 import vironit.poddubnaya.myappvironit.utils.KeyboardUtil;
 import vironit.poddubnaya.myappvironit.utils.ShowDialogUtil;
 import vironit.poddubnaya.myappvironit.utils.ShowSnackBarUtil;
 
-public abstract class BaseActivity extends MvpAppCompatActivity implements IBaseView {
+public abstract class BaseActivity<P extends BasePresenter> extends MvpAppCompatActivity implements IBaseView {
 
     @Nullable
     private AlertDialog mDialog;
@@ -27,11 +31,13 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements IBase
     @Nullable
     private Snackbar mSnackBar;
 
+    protected final Handler mHandler = new Handler();
+
     @LayoutRes
-    abstract int getLayoutResId();
+    public abstract int getLayoutResId();
 
     @IdRes
-    abstract int getRootViewResId();
+    public abstract int getRootViewResId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +63,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements IBase
 
     @Override
     public void showDialogMessage(@NonNull String message, boolean closable) {
-        String title  = getResources().getString(R.string.app_name);
+        String title = getResources().getString(R.string.app_name);
         showDialogWithOptions(title, message, null, null, null,
                 null, closable);
 
@@ -73,7 +79,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements IBase
                                       boolean cancelable) {
         hideDialogMessage();
         mDialog = ShowDialogUtil.showMessageDialog(this, title, message, positiveOptionMessage,
-                negativeOptionMessage, positiveListener, negativeListener, false);
+                negativeOptionMessage, positiveListener, negativeListener, cancelable);
 
     }
 
@@ -90,6 +96,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements IBase
             rootView = getWindow().getDecorView();
         }
         mSnackBar = ShowSnackBarUtil.showSnackBar(rootView, this, message, actionMessage, actionListener, duration);
+
     }
 
     @Override
@@ -110,16 +117,22 @@ public abstract class BaseActivity extends MvpAppCompatActivity implements IBase
 
     @Override
     public void showProgress() {
-
+        showProgress(null);
     }
 
     @Override
-    public void showProgress(@NonNull String message) {
+    public void showProgress(@Nullable String messageText) {
+        hideProgress();
+        String titleText = getResources().getString(R.string.progress_title);
+        mDialog = ShowDialogUtil.showProgressDialog(this, titleText, messageText);
 
     }
 
     @Override
     public void hideProgress() {
+        if (mDialog != null && mDialog.isShowing()) {
+            mDialog.dismiss();
+        }
 
     }
 }
