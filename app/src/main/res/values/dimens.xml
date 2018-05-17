@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="progress_dialog_width">280dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+
+    <dimen name="default_xxxl_text_size">22sp</dimen>
+    <dimen name="default_xxl_text_size">20sp</dimen>
+    <dimen name="default_extra_large_text_size">18sp</dimen>
+    <dimen name="default_large_text_size">16sp</dimen>
+    <dimen name="default_text_size">14sp</dimen>
+    <dimen name="default_small_text_size">12sp</dimen>
+    <dimen name="default_extra_small_text_size">10sp</dimen>
+
+    <dimen name="default_0_padding">0dp</dimen>
+
+</resources>
