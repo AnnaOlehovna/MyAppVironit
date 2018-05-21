@@ -23,7 +23,6 @@ import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.TestPresenter;
 public interface AppComponent {
 
     @Component.Builder
-
     interface Builder {
         @BindsInstance
         Builder appContext(App app);
