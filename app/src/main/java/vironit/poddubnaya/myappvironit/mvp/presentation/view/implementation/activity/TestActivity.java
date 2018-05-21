@@ -10,6 +10,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import vironit.poddubnaya.myappvironit.R;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.TestPresenter;
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.ITestView;
 
@@ -33,6 +34,12 @@ public class TestActivity extends BaseActivity<TestPresenter> implements ITestVi
     public int getRootViewResId() {
         return R.id.v_root_test_activity;
     }
+
+    @Override
+    protected TestPresenter getPresenter() {
+        return mTestPresenter;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +66,6 @@ public class TestActivity extends BaseActivity<TestPresenter> implements ITestVi
                         , "message_with_action", v1 -> Toast.makeText(this,"actionText",Toast.LENGTH_SHORT).show()));
 
        findViewById(R.id.btn_show_avtoclosable_message)
-               .setOnClickListener(v -> showAutocloseableMessage("klhlkhlk"));
+               .setOnClickListener(v -> mTestPresenter.asdas());
     }
 }

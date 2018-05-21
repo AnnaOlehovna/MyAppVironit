@@ -8,11 +8,17 @@ import io.reactivex.Scheduler;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import vironit.poddubnaya.myappvironit.App;
+import vironit.poddubnaya.myappvironit.di.components.AppComponent;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.ITestView;
 
 @InjectViewState
 public class TestPresenter extends BaseAppPresenter<ITestView> {
+
+    public TestPresenter() {
+        App.getsAppComponent().inject(this);
+    }
 
     @Override
     public void attachView(ITestView view) {
@@ -25,5 +31,9 @@ public class TestPresenter extends BaseAppPresenter<ITestView> {
                 .subscribe(as-> {
                     getViewState().hideProgress();
                 }, throwable -> throwable.printStackTrace());
+    }
+
+    public void asdas(){
+        getViewState().hideProgress();
     }
 }

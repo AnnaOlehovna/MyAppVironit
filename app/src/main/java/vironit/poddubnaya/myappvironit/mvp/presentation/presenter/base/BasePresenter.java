@@ -6,8 +6,14 @@ import android.support.annotation.Nullable;
 
 import com.arellomobile.mvp.MvpPresenter;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import io.reactivex.Scheduler;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import vironit.poddubnaya.myappvironit.constants.IAppConstants;
+import vironit.poddubnaya.myappvironit.mvp.model.manager.interfaces.ResourcesManager;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.base.IBaseView;
 import vironit.poddubnaya.myappvironit.utils.AppLog;
@@ -16,6 +22,21 @@ public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter
 
     private final CompositeDisposable mLiteCompositeDisposable = new CompositeDisposable();
     private final CompositeDisposable mHardCompositeDisposable = new CompositeDisposable();
+
+    @Inject
+    @Named(IAppConstants.UI_SCHEDULER)
+    protected Scheduler mUIScheduler;
+
+    @Inject
+    @Named(IAppConstants.IO_SCHEDULER)
+    protected Scheduler mIOScheduler;
+
+    @Inject
+    @Named(IAppConstants.COMPUTATION_SCHEDULER)
+    protected Scheduler mComputationScheduler;
+
+    @Inject
+    protected ResourcesManager mResourcesManager;
 
     @Override
     public void attachView(View view) {

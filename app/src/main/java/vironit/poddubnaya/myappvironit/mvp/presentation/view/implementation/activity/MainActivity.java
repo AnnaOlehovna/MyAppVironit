@@ -25,6 +25,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     }
 
     @Override
+    protected MainPresenter getPresenter() {
+        return mMainPresenter;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mMainPresenter.showProgressWithMessage(getString(R.string.big_text));

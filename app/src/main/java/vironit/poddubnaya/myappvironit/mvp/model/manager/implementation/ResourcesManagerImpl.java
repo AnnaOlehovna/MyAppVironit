@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 
+import javax.inject.Inject;
+
 import vironit.poddubnaya.myappvironit.mvp.model.manager.interfaces.ResourcesManager;
 
 public class ResourcesManagerImpl implements ResourcesManager {
@@ -11,6 +13,7 @@ public class ResourcesManagerImpl implements ResourcesManager {
     @NonNull
     private final Context mAppContext;
 
+    @Inject
     public ResourcesManagerImpl(@NonNull Context AppContext) {
         mAppContext = AppContext;
     }
