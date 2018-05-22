@@ -6,4 +6,7 @@ public interface IAppConstants {
     String COMPUTATION_SCHEDULER = "COMPUTATION_SCHEDULER";
     String UI_SCHEDULER = "UI_SCHEDULER";
     String IO_SCHEDULER = "IO_SCHEDULER";
+    String FACEBOOK = "FACEBOOK";
+    String TWITTER = "TWITTER";
+    String GOOGLE = "GOOGLE";
 }

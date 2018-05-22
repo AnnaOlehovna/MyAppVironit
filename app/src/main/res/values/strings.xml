@@ -7,7 +7,22 @@
         чтобы впустил меня и закрывал дверь, иначе меня сожрут. Собаки ушли через полчаса. До электрика не дозвонился, розетку отрубил сам. Экзамен сдал. </string>
     <string name="empty_string"> </string>
 
-    <string name="progress_title">Wait...</string>
+    <string name="progress_title">Wait…</string>
     <string name="press_again_to_exit">Press back again to exit</string>
+
+    <string name="et_login">Login</string>
+    <string name="et_password">Password</string>
+
+    <string name="tv_login_with">Login with:</string>
+
+    <string name="facebook_app_id">187444868750867</string>
+    <string name="fb_login_protocol_scheme">fb187444868750867</string>
+
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">wbUTY3gsDeRhwluUbAV94y8Ve</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">Bjf2NO6Ochw8ZoRVM2p2T6bZLr4QjVTgihOSDmAFHFPpScmcwK</string>
+
+    <string name="success_login">Success login</string>
+    <string name="error_login">Error login</string>
+
 
 </resources>

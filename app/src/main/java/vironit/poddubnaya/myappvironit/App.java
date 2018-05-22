@@ -5,6 +5,9 @@ import android.app.Application;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 
+import com.facebook.FacebookSdk;
+import com.twitter.sdk.android.core.Twitter;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -51,7 +54,7 @@ public class App extends Application implements HasActivityInjector, HasServiceI
     public void onCreate() {
         super.onCreate();
         initDagger2();
-
+        Twitter.initialize(this);
     }
 
 

@@ -11,6 +11,7 @@ import vironit.poddubnaya.myappvironit.di.modules.InteractorModule;
 import vironit.poddubnaya.myappvironit.di.modules.ManagerModule;
 import vironit.poddubnaya.myappvironit.di.modules.RepositoryModule;
 import vironit.poddubnaya.myappvironit.di.modules.SchedulerModule;
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.LoginPresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.TestPresenter;
 
 @Singleton
@@ -33,4 +34,6 @@ public interface AppComponent {
     void inject(App app);
 
     void inject(TestPresenter testPresenter);
+
+    void inject(LoginPresenter loginPresenter);
 }

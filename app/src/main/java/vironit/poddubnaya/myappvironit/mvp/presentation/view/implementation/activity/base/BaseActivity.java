@@ -88,6 +88,30 @@ public abstract class BaseActivity<P extends BaseAppPresenter> extends MvpAppCom
     }
 
     @Override
+    protected void onStart() {
+        AppLog.logActivity(this);
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        AppLog.logActivity(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        AppLog.logActivity(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        AppLog.logActivity(this);
+        super.onStop();
+    }
+
+    @Override
     public void hideKeyboard() {
         KeyboardUtil.hideKeyboard(this);
 
