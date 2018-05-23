@@ -2,6 +2,7 @@ package vironit.poddubnaya.myappvironit.utils;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import vironit.poddubnaya.myappvironit.BuildConfig;
@@ -30,6 +31,12 @@ public abstract class AppLog {
             Log.i(getAppTag(), getInfo(activity));
         }
     }
+    public static void logFragment(@NonNull Fragment fragment) {
+        if (isLogEnabled()) {
+            Log.i(getAppTag(), getInfo(fragment));
+        }
+    }
+
 
     private static boolean isLogEnabled() {
         return BuildConfig.DEBUG;

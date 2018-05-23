@@ -6,9 +6,12 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.Profile;
+import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -109,7 +112,7 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
             Log.i("MY_APP_TAG", "ok");
             getViewState().showSuccessMessage();
         } catch (ApiException e) {
-            Log.w("MY_APP_TAG", "signInResult:failed code=" + e.getStatusCode());
+            Log.i("MY_APP_TAG", "signInResult:failed code=" + e.getStatusCode());
 
         }
     }
@@ -124,6 +127,7 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
 
 
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data, @NonNull BaseActivity activity) {
@@ -145,4 +149,13 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
                 break;
         }
     }
+
+
+    @Override
+    public void destroyView(ILoginView view) {
+        super.destroyView(view);
+        LoginManager.getInstance().unregisterCallback(mCallbackManager);
+        mTwitterAuthClient.cancelAuthorize();
+    }
+
 }
