@@ -2,6 +2,7 @@ package vironit.poddubnaya.myappvironit.mvp.presentation.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 
+import java.util.Observable;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Scheduler;
@@ -31,6 +32,7 @@ public class TestPresenter extends BaseAppPresenter<ITestView> {
                 .subscribe(as-> {
                     getViewState().hideProgress();
                 }, throwable -> throwable.printStackTrace());
+
     }
 
     public void asdas(){

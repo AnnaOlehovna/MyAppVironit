@@ -47,7 +47,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
         mLoginPresenter.signOutFromAllAccounts();
         facebookButton.setOnClickListener(v -> mLoginPresenter.clickOnFacebookButton(this));
         twitterButton.setOnClickListener(v -> mLoginPresenter.clickOnTwitterButton(this));

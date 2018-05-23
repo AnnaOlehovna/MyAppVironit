@@ -3,6 +3,7 @@ package vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 
 import com.arellomobile.mvp.MvpPresenter;
 
@@ -52,7 +53,7 @@ public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter
 
     @Override
     public void detachView(View view) {
-        mLiteCompositeDisposable.clear();
+        clearLiteDisposable();
         AppLog.logPresenter(this);
         super.detachView(view);
     }
@@ -66,7 +67,7 @@ public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter
 
     @Override
     public void onDestroy() {
-        mHardCompositeDisposable.clear();
+        clearHardDisposable();
         AppLog.logPresenter(this);
         super.onDestroy();
     }
@@ -94,5 +95,21 @@ public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter
         }
     }
 
+    protected void clearLiteDisposable() {
+        mLiteCompositeDisposable.clear();
+    }
 
+    protected void clearHardDisposable() {
+        mHardCompositeDisposable.clear();
+    }
+
+    protected String getString(@StringRes int stringId) {
+        return mResourcesManager.getString(stringId);
+    }
+
+    protected final void clearDisposableIfPossible(@Nullable Disposable disposable) {
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
+    }
 }

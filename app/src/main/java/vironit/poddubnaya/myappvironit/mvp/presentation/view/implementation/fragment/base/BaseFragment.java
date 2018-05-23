@@ -1,7 +1,6 @@
 package vironit.poddubnaya.myappvironit.mvp.presentation.view.implementation.fragment.base;
 
 import android.app.Activity;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -21,7 +21,11 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 
 import java.lang.reflect.Field;
 
+import javax.inject.Inject;
+
+import butterknife.ButterKnife;
 import dagger.android.support.AndroidSupportInjection;
+import vironit.poddubnaya.myappvironit.mvp.model.manager.interfaces.ResourcesManager;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.base.IBaseView;
@@ -41,6 +45,8 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
     @Nullable
     private Snackbar mSnackBar;
 
+    @Inject
+    protected ResourcesManager mResourcesManager;
 
     @Override
     public void onAttach(Context context) {
@@ -63,7 +69,11 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         AppLog.logFragment(this);
         View view = inflater.inflate(getLayoutResId(), container, false);
+        if (getArguments() != null) {
+            initFromArguments(getArguments());
+        }
         initBeforeLayout();
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -71,6 +81,8 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         AppLog.logFragment(this);
         super.onViewCreated(view, savedInstanceState);
+        initViewBeforePresenterAttach();
+        getMvpDelegate().onAttach();
     }
 
     @Override
@@ -88,6 +100,7 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
     @Override
     public void onPause() {
         AppLog.logFragment(this);
+        hideKeyboard();
         super.onPause();
     }
 
@@ -100,6 +113,9 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
     @Override
     public void onDestroyView() {
         AppLog.logFragment(this);
+        hideProgress();
+        hideDialogMessage();
+        hideMessage();
         super.onDestroyView();
     }
 
@@ -111,13 +127,13 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
         try {
             Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
             childFragmentManager.setAccessible(true);
-            childFragmentManager.set(this,null);
+            childFragmentManager.set(this, null);
         } catch (NoSuchFieldException e) {
             Log.i("MY_APP_TAG", "signInResult:failed code=" + e.toString());
         } catch (IllegalAccessException e) {
             Log.i("MY_APP_TAG", "signInResult:failed code=" + e.toString());
             e.printStackTrace();
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.i("MY_APP_TAG", "signInResult:failed code=" + e.toString());
             e.printStackTrace();
         }
@@ -169,6 +185,7 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
     @Override
     public void showMessage(@NonNull String message, boolean closable,
                             @Nullable String actionMessage, @Nullable View.OnClickListener actionListener) {
+        hideKeyboard();
         hideMessage();
         @Nullable
         View rootView = getView();
@@ -236,9 +253,20 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
         }
     }
 
-    protected void initBeforeLayout(){
+    protected void initBeforeLayout() {
         AppLog.logFragment(this);
     }
 
+    protected void initFromArguments(@NonNull Bundle arg) {
+        AppLog.logFragment(this);
 
+    }
+
+    protected void initViewBeforePresenterAttach() {
+
+    }
+
+    protected String getResourseString(@StringRes int stringId) {
+        return mResourcesManager.getString(stringId);
+    }
 }
