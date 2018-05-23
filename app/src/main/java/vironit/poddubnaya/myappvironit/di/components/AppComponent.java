@@ -11,6 +11,7 @@ import vironit.poddubnaya.myappvironit.di.modules.InteractorModule;
 import vironit.poddubnaya.myappvironit.di.modules.ManagerModule;
 import vironit.poddubnaya.myappvironit.di.modules.RepositoryModule;
 import vironit.poddubnaya.myappvironit.di.modules.SchedulerModule;
+import vironit.poddubnaya.myappvironit.di.modules.SocialNetworksModule;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.LoginPresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.TestPresenter;
 
@@ -20,7 +21,8 @@ import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.TestPresenter;
         ApplicationModule.class,
         RepositoryModule.class,
         InteractorModule.class,
-        AppActivitiesModule.class})
+        AppActivitiesModule.class,
+        SocialNetworksModule.class})
 public interface AppComponent {
 
     @Component.Builder

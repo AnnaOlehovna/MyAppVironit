@@ -18,6 +18,8 @@
     <string name="facebook_app_id">187444868750867</string>
     <string name="fb_login_protocol_scheme">fb187444868750867</string>
 
+    <string name="server_client_id">1069036357637-iv54rmgkdjmvs31v49gvsrm4b4o2o4as.apps.googleusercontent.com</string>
+
     <string name="com.twitter.sdk.android.CONSUMER_KEY">wbUTY3gsDeRhwluUbAV94y8Ve</string>
     <string name="com.twitter.sdk.android.CONSUMER_SECRET">Bjf2NO6Ochw8ZoRVM2p2T6bZLr4QjVTgihOSDmAFHFPpScmcwK</string>
 

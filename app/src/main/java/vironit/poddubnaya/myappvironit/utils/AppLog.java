@@ -49,7 +49,7 @@ public abstract class AppLog {
 
 
     private static String getAppTag() {
-        return "AAA_TAG";
+        return "MY_APP_TAG";
     }
 
 

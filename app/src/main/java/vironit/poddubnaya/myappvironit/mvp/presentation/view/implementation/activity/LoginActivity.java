@@ -26,6 +26,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     @BindView(R.id.btn_twitter)
     Button twitterButton;
 
+    @BindView(R.id.btn_google)
+    Button googleButton;
+
     @Override
     public int getLayoutResId() {
         return R.layout.layout_login_activity;
@@ -45,8 +48,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-        facebookButton.setOnClickListener(v -> mLoginPresenter.clickOnFacebookButton());
+        mLoginPresenter.signOutFromAllAccounts();
+        facebookButton.setOnClickListener(v -> mLoginPresenter.clickOnFacebookButton(this));
         twitterButton.setOnClickListener(v -> mLoginPresenter.clickOnTwitterButton(this));
+        googleButton.setOnClickListener(v -> mLoginPresenter.clickOnGoogleButton(this));
     }
 
 
