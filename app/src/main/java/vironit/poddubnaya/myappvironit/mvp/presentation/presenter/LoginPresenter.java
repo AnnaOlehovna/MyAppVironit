@@ -6,19 +6,14 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.Profile;
-import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.twitter.sdk.android.core.Callback;
@@ -29,12 +24,10 @@ import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 import javax.inject.Inject;
 
 import vironit.poddubnaya.myappvironit.App;
-import vironit.poddubnaya.myappvironit.R;
 import vironit.poddubnaya.myappvironit.constants.IAppConstants;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
@@ -67,7 +60,7 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         Log.i("MY_APP_TAG", loginResult.getAccessToken().getUserId());
-                        getViewState().showSuccessMessage();
+                        getViewState().navigateHomeActivity();
                     }
 
                     @Override
@@ -89,7 +82,7 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
         mTwitterAuthClient.authorize(activity, new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
-                getViewState().showSuccessMessage();
+                getViewState().navigateHomeActivity();
             }
 
             @Override
@@ -110,7 +103,7 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             Log.i("MY_APP_TAG", "ok");
-            getViewState().showSuccessMessage();
+            getViewState().navigateHomeActivity();
         } catch (ApiException e) {
             Log.i("MY_APP_TAG", "signInResult:failed code=" + e.getStatusCode());
 

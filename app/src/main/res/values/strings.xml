@@ -26,5 +26,9 @@
     <string name="success_login">Success login</string>
     <string name="error_login">Error login</string>
 
+    <string name="menu_news">News</string>
+    <string name="menu_chat">Messages</string>
+    <string name="menu_profile">Profile</string>
+
 
 </resources>

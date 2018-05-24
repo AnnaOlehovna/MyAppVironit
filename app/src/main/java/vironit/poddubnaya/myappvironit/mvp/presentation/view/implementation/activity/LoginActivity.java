@@ -62,8 +62,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     }
 
     @Override
-    public void showSuccessMessage() {
-        showDialogMessage(getString(R.string.success_login),true);
+    public void navigateHomeActivity() {
+        startActivity(new Intent(this,HomeActivity.class));
     }
 
     @Override

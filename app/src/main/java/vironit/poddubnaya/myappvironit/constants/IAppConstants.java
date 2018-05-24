@@ -10,4 +10,8 @@ public interface IAppConstants {
     String TWITTER = "TWITTER";
     String GOOGLE = "GOOGLE";
     int RC_SIGN_IN = 9001;
+    String TAG_FRAGMENT = "TAG_FRAGMENT";
+    String NEWS_FRAGMENT = "NEWS_FRAGMENT";
+    String CHAT_FRAGMENT = "CHAT_FRAGMENT";
+    String PROFILE_FRAGMENT = "PROFILE_FRAGMENT";
 }

@@ -12,7 +12,11 @@ import vironit.poddubnaya.myappvironit.di.modules.ManagerModule;
 import vironit.poddubnaya.myappvironit.di.modules.RepositoryModule;
 import vironit.poddubnaya.myappvironit.di.modules.SchedulerModule;
 import vironit.poddubnaya.myappvironit.di.modules.SocialNetworksModule;
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.ChatPresenter;
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.HomePresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.LoginPresenter;
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.NewsPresenter;
+import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.ProfilePresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.TestPresenter;
 
 @Singleton
@@ -38,4 +42,13 @@ public interface AppComponent {
     void inject(TestPresenter testPresenter);
 
     void inject(LoginPresenter loginPresenter);
+
+    void inject(HomePresenter homePresenter);
+
+    void inject(NewsPresenter newsPresenter);
+
+    void inject(ChatPresenter chatPresenter);
+
+    void inject(ProfilePresenter profilePresenter);
+
 }
