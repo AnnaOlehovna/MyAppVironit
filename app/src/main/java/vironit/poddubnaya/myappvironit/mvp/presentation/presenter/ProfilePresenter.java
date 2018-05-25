@@ -8,6 +8,7 @@ import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.IProfile
 
 @InjectViewState
 public class ProfilePresenter extends BaseAppPresenter<IProfileView> {
+
     public ProfilePresenter() {
         App.getsAppComponent().inject(this);
     }
