@@ -1,25 +1,30 @@
 package vironit.poddubnaya.myappvironit.mvp.presentation.view.implementation.fragment;
 
 
-import android.support.design.widget.FloatingActionButton;
 import android.widget.ImageView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.bumptech.glide.Glide;
+
+import java.io.File;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import vironit.poddubnaya.myappvironit.R;
 import vironit.poddubnaya.myappvironit.mvp.presentation.presenter.ProfilePresenter;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.implementation.fragment.base.BaseFragment;
 import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.IProfileView;
-import vironit.poddubnaya.myappvironit.mvp.presentation.view.interfaces.base.IProgressView;
 
 public class ProfileFragment extends BaseFragment<ProfilePresenter> implements IProfileView {
 
     @InjectPresenter
     ProfilePresenter mProfilePresenter;
 
-    @BindView(R.id.btn_edit_photo)
-    FloatingActionButton mEditPhotoButton;
+    @OnClick(R.id.btn_edit_photo)
+    void changeUserPhoto() {
+        mProfilePresenter.changePhoto(this);
+    }
+
 
     @BindView(R.id.iv_user_photo)
     ImageView mUserPhoto;
@@ -36,5 +41,13 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements I
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
+    }
+
+
+    @Override
+    public void setPhoto(File file) {
+        Glide.with(this)
+                .load(file)
+                .into(mUserPhoto);
     }
 }

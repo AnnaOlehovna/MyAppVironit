@@ -30,5 +30,9 @@
     <string name="menu_chat">Messages</string>
     <string name="menu_profile">Profile</string>
 
+    <string name="change_photo">Change photo</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="change_photo_messsage">Do you want choose photo from Gallery or make a new one?</string>
 
 </resources>
